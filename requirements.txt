@@ -1,5 +1,4 @@
 numpy
 flask
 flask_session
-tempfile
 gunicorn

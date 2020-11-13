@@ -68,7 +68,6 @@ def check_session_for_winner(session_board):
         elif session_board[i][0] == session_board[i][1] == session_board[i][2]:
             session["winner_found"] = True
             session["winner"] = session_board[i][0]
-            break
     
     ## check columns
     for i in range(len(session_board)):
@@ -77,7 +76,6 @@ def check_session_for_winner(session_board):
         elif session_board[0][i] == session_board[1][i] == session_board[2][i]:
             session["winner_found"] = True
             session["winner"] = session_board[0][i]
-            break
         
     ## check diagonals
     session_board_ar = np.array(session_board)

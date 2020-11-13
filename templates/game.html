@@ -1,0 +1,81 @@
+<!--  -*- coding: utf-8 -*-
+"""
+Created on Mon Nov  9 18:57:06 2020
+
+@author: Dewi
+"""
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        
+        <title>Tic Tac Toe {% block title %}{% endblock %}</title>
+        
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            td {
+                border: 1px solid black;
+                width: 150px;
+                height: 150px;
+                font-size: 30px;
+                text-align: center;
+            }
+            td > a {
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        {% if draw %}
+            <div>
+                <h1> It's a draw </h1>
+            </div>
+        {% endif %}
+        
+        {% if winner_found %}
+            <div>
+                <h1> {{ winner }} wins! </h1>
+            </div>
+        {% endif %}
+    
+        <table>
+            {% for i in range(3) %}
+                <tr>
+                    {% for j in range(3) %}
+                        <td>
+                            {% if game[i][j] %}
+                                {{ game[i][j] }}
+                            {% else %}
+                                <a href="{{ url_for('play', row=i, col=j) }}">Play {{ turn }} here.</a>
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <div>
+            <a href="{{ url_for('reset') }}" class="btn btn-primary">Reset game</a>
+        </div>
+    </body>
+
+</html>
+
+

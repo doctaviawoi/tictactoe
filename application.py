@@ -56,24 +56,20 @@ def reset():
     session["draw"] = False
     
     return redirect(url_for("index"))
-
+ 
 
 def check_session_for_winner(session_board):
     # to check: 1.rows(horizontal), 2.columns(vertical), 3.diagonal, 4. draw
     
     ## check rows
     for i in range(len(session_board)):
-        if session_board[i][0] == None:
-            break
-        elif session_board[i][0] == session_board[i][1] == session_board[i][2]:
+        if session_board[i][0] != None and session_board[i][0] == session_board[i][1] == session_board[i][2]:
             session["winner_found"] = True
             session["winner"] = session_board[i][0]
     
     ## check columns
     for i in range(len(session_board)):
-        if session_board[0][i] == None:
-            break
-        elif session_board[0][i] == session_board[1][i] == session_board[2][i]:
+        if session_board[0][i] != None and session_board[0][i] == session_board[1][i] == session_board[2][i]:
             session["winner_found"] = True
             session["winner"] = session_board[0][i]
         
